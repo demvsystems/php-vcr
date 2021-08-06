@@ -23,7 +23,8 @@ class HttpClient
     {
         $ch = curl_init($request->getUrl());
 
-        Assertion::isResource($ch, "Could not init curl with URL '{$request->getUrl()}'");
+// fixme: Valid curl ressource not detected, false negative with guzzle7
+//        Assertion::isResource($ch, "Could not init curl with URL '{$request->getUrl()}'");
 
         curl_setopt($ch, \CURLOPT_CUSTOMREQUEST, $request->getMethod());
         curl_setopt($ch, \CURLOPT_HTTPHEADER, HttpUtil::formatHeadersForCurl($request->getHeaders()));
